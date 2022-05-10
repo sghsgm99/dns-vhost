@@ -9,11 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test bash script
         run: echo "This is test bash script"
-      - name: Install packages
+      - name: connect host
         run: |
-          ls
           ls ${{ github.workspace }}
-      - name: Add known hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ github.event.inputs.host }} > ~/.ssh/known_hosts
+          ssh -i dns.pem ubuntu@3.142.169.168
