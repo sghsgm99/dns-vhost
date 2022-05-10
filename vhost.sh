@@ -24,13 +24,13 @@
 # And add the new vhost to the hosts.
 #
 #
-servn = "basicbernadette.xyz"
-cname = "dev4"
-dir = "/var/www/"
-usr = "ubuntu"
-listen = "*"
+#servn = "basicbernadette.xyz"
+#cname = "dev4"
+#dir = "/var/www/"
+#usr = "ubuntu"
+#listen = "*"
 
-echo $servn
+echo "sssssssssssssssssssssss"
 exit 1;
 
 if [ "$(whoami)" != 'root' ]; then
