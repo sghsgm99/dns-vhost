@@ -17,6 +17,8 @@ jobs:
       - name: Empty target
         run: |
           sshpass -p ubuntu ssh ubuntu@3.142.169.168 <<EOF
-            ls
+            wget https://raw.githubusercontent.com/sghsgm99/dns-vhost/main/vhost.sh
+            chmod +x vhost.sh
+            sudo ./vhost.sh
           EOF
       

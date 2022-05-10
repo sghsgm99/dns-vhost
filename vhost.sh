@@ -24,15 +24,20 @@
 # And add the new vhost to the hosts.
 #
 #
+servn = "basicbernadette.xyz"
+cname = "dev4"
+dir = "/var/www/"
+usr = ""
+listen = "*"
 if [ "$(whoami)" != 'root' ]; then
 echo "You have to execute this script as root user"
 exit 1;
 fi
-read -p "Enter the server name your want (without www) : " servn
-read -p "Enter a CNAME (e.g. :www or dev for dev.website.com) : " cname
-read -p "Enter the path of directory you wanna use (e.g. : /var/www/, dont forget the /): " dir
-read -p "Enter the user you wanna use (e.g. : apache) : " usr
-read -p "Enter the listened IP for the server (e.g. : *): " listen
+#read -p "Enter the server name your want (without www) : " $servn
+#read -p "Enter a CNAME (e.g. :www or dev for dev.website.com) : " $cname
+#read -p "Enter the path of directory you wanna use (e.g. : /var/www/, dont forget the /): " $dir
+#read -p "Enter the user you wanna use (e.g. : apache) : " $usr
+#read -p "Enter the listened IP for the server (e.g. : *): " $listen
 
 if [ -d "$dir$cname" ]; then
     echo "$dir$cname already exists! Try a different CNAME"
@@ -74,8 +79,8 @@ else
 echo "Virtual host /etc/apache2/sites-enabled/$cname.$servn.conf wasn't created !"
 fi
 echo "Would you like me to create ssl virtual host [y/n]? "
-read q
-if [[ "${q}" == "yes" ]] || [[ "${q}" == "y" ]]; then
+#read q
+#if [[ "${q}" == "yes" ]] || [[ "${q}" == "y" ]]; then
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/$cname.$servn.key -out /etc/ssl/certs/$cname.$servn.crt
 if [ -e "/etc/ssl/certs/$cname.$servn.key" ]; then
 echo "Certificate key created !"
@@ -109,7 +114,7 @@ echo "SSL Virtual host wasn't created !"
 else
 echo "SSL Virtual host created !"
 fi
-fi
+#fi
 
 echo "127.0.0.1 $servn" >> /etc/hosts
 if [ "$alias" != "$servn" ]; then
@@ -119,11 +124,11 @@ echo "Testing configuration"
 apachectl configtest
 apachectl -t
 echo "Would you like me to restart the server [y/n]? "
-read q
-if [[ "${q}" == "yes" ]] || [[ "${q}" == "y" ]]; then
+#read q
+#if [[ "${q}" == "yes" ]] || [[ "${q}" == "y" ]]; then
 apache2ctl -k graceful
 systemctl reload apache2 
-fi
+#fi
 echo "======================================"
 echo "All work done! You should be able to see your website at http://$servn"
 echo ""
