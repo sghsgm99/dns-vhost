@@ -11,7 +11,5 @@ jobs:
         run: echo "This is test bash script"
       - name: Install packages
         run: |
-          ssh -i dns.pem ubuntu@3.142.169.168
-          cd scripts
           ls
-          
+          ls ${{ github.workspace }}
