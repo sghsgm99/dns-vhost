@@ -13,3 +13,7 @@ jobs:
         run: |
           ls
           ls ${{ github.workspace }}
+      - name: Add known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ github.event.inputs.host }} > ~/.ssh/known_hosts
