@@ -12,6 +12,11 @@ jobs:
           sudo apt-get -y install sshpass
       - name: Add known hosts
         run: |
-          ssh ubuntu@3.142.169.168
-          ubuntu
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 3.142.169.168 > ~/.ssh/known_hosts
+      - name: Empty target
+        run: |
+          sshpass -p ubuntu ssh ubuntu@3.142.169.168 <<EOF
+            ls
+          EOF
       
