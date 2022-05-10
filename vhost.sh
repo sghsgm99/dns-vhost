@@ -24,14 +24,6 @@
 # And add the new vhost to the hosts.
 #
 #
-#servn = "basicbernadette.xyz"
-#cname = "dev4"
-#dir = "/var/www/"
-#usr = "ubuntu"
-#listen = "*"
-
-echo "sssssssssssssssssssssss"
-exit 1;
 
 if [ "$(whoami)" != 'root' ]; then
 echo "You have to execute this script as root user"

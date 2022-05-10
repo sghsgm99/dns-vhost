@@ -16,6 +16,12 @@ jobs:
           ssh-keyscan -H 3.142.169.168 > ~/.ssh/known_hosts
       - name: Empty target
         run: |
+        servn = "basicbernadette.xyz"
+        cname = "dev4"
+        dir = "/var/www/"
+        usr = "ubuntu"
+        listen = "*"
+
           sshpass -p ubuntu ssh ubuntu@3.142.169.168 <<EOF
             cd scripts
             rm *
