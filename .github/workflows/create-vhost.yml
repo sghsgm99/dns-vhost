@@ -14,7 +14,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H 3.142.169.168 > ~/.ssh/known_hosts
-      - name: Empty target
+      - name: Create Virtual Host
         run: |
           sshpass -p ubuntu ssh ubuntu@3.142.169.168 <<EOF
             cd scripts
