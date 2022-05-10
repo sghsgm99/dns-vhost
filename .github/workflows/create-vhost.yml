@@ -12,4 +12,4 @@ jobs:
       - name: connect host
         run: |
           ls ${{ github.workspace }}
-          ssh -i dns.pem ubuntu@3.142.169.168
+          ssh ubuntu@3.142.169.168
