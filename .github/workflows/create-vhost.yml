@@ -23,6 +23,8 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ github.event.inputs.host }} > ~/.ssh/known_hosts
       - name: Create Virtual Host
+        with:
+          servn: ${{ github.event.inputs.servn }}
         run: |
           sshpass -p ubuntu ssh ubuntu@${{ github.event.inputs.host }} <<EOF
             cd scripts
