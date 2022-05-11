@@ -1,11 +1,8 @@
 #!/bin/bash
 
-echo $1."----You have to execute this script as root user".$2.','.$3.','.$4.','.$5
-exit 0;
-
-servn="basicbernadette.xyz"
-cname="dev6"
-dir="/var/www/"
+servn=$1
+cname=$2
+dir=$3
 usr=""
 listen="*"
 

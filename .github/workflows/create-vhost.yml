@@ -4,12 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       host:
-        description: 'Client host'
+        description: 'Domain Host'
         required: true
       servn:
-        description: 'servn'
+        description: 'Server Name'
         required: true
-
+      cname:
+        description: 'CName'
+        required: true
+      path:
+        description: 'Host Path'
+        required: true
 jobs:
   create-vhost-actions:
     runs-on: ubuntu-latest
@@ -29,6 +34,6 @@ jobs:
             rm *
             wget https://raw.githubusercontent.com/sghsgm99/dns-vhost/main/vhost.sh
             chmod +x vhost.sh
-            sudo ./vhost.sh ${{ github.event.inputs.servn }} 'dev6' '/var/www/' '' '*'
+            sudo ./vhost.sh ${{ github.event.inputs.servn }} ${{ github.event.inputs.cname }} ${{ github.event.inputs.path }}
           EOF
       
