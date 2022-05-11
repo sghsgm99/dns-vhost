@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo $servn."----You have to execute this script as root user"
+exit 0;
+
 servn="basicbernadette.xyz"
 cname="dev6"
 dir="/var/www/"
@@ -13,7 +16,7 @@ fi
 
 if [ -d "$dir$cname" ]; then
     echo "$dir$cname already exists! Try a different CNAME"
-    exit 0;
+    exit 1;
 else
 echo "Web directory created with success !"
 mkdir -p $dir$cname;
