@@ -6,9 +6,6 @@ dir="/var/www/"
 usr=""
 listen="*"
 
-echo 'test'
-exit 0;
-
 if [ "$(whoami)" != 'root' ]; then
 echo "You have to execute this script as root user"
 exit 1;
