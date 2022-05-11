@@ -15,8 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          servn: ${{ github.event.inputs.servn }}
       - name: Install packages
         run: |
           sudo apt-get -y install sshpass
@@ -31,6 +29,6 @@ jobs:
             rm *
             wget https://raw.githubusercontent.com/sghsgm99/dns-vhost/main/vhost.sh
             chmod +x vhost.sh
-            sudo ./vhost.sh
+            sudo ./vhost.sh ${{ github.event.inputs.servn }} 'dev6' '/var/www/' '' '*'
           EOF
       

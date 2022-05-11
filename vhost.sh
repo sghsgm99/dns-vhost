@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo $servn."----You have to execute this script as root user"
+echo $1."----You have to execute this script as root user".$2.','.$3.','.$4.','.$5
 exit 0;
 
 servn="basicbernadette.xyz"
