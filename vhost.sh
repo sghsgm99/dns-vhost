@@ -13,13 +13,13 @@ fi
 
 if [ -d "$dir$cname" ]; then
     echo "$dir$cname already exists! Try a different CNAME"
-
+    exit 1;
 else
 echo "Web directory created with success !"
 mkdir -p $dir$cname;
 mkdir -p $dir$cname/html/;
 mkdir -p $dir$cname/cgi-bin/;
-fi
+
 echo "<h1>$cname $servn</h1>" > $dir$cname/html/index.html
 chown -R $usr:$usr $dir$cname
 chmod -R '755' $dir$cname
@@ -59,13 +59,11 @@ echo "Testing configuration"
 apachectl configtest
 apachectl -t
 echo "Would you like me to restart the server [y/n]? "
-#read q
-#if [[ "${q}" == "yes" ]] || [[ "${q}" == "y" ]]; then
 apache2ctl -k graceful
 systemctl reload apache2 
-#fi
 echo "======================================"
 echo "All work done! You should be able to see your website at http://$servn"
 echo ""
 echo "Share the love! <3"
 echo "======================================"
+fi
