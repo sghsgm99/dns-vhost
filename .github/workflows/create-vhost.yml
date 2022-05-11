@@ -1,6 +1,11 @@
 name: Create Vhost
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      host:
+        description: 'Client host'
+        required: true
 
 jobs:
   create-vhost-actions:
@@ -13,10 +18,10 @@ jobs:
       - name: Add known hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H 3.142.169.168 > ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ github.event.inputs.host }} > ~/.ssh/known_hosts
       - name: Create Virtual Host
         run: |
-          sshpass -p ubuntu ssh ubuntu@3.142.169.168 <<EOF
+          sshpass -p ubuntu ssh ubuntu@${{ github.event.inputs.host }} <<EOF
             cd scripts
             rm *
             wget https://raw.githubusercontent.com/sghsgm99/dns-vhost/main/vhost.sh

@@ -13,7 +13,7 @@ fi
 
 if [ -d "$dir$cname" ]; then
     echo "$dir$cname already exists! Try a different CNAME"
-    exit 1;
+    exit 0;
 else
 echo "Web directory created with success !"
 mkdir -p $dir$cname;
