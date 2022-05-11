@@ -12,9 +12,9 @@ on:
       cname:
         description: 'CName'
         required: true
-      path:
-        description: 'Host Path'
-        required: true
+      username:
+        description: 'Username'
+        required: true  
 jobs:
   create-vhost-actions:
     runs-on: ubuntu-latest
@@ -29,11 +29,11 @@ jobs:
           ssh-keyscan -H ${{ github.event.inputs.host }} > ~/.ssh/known_hosts
       - name: Create Virtual Host
         run: |
-          sshpass -p ubuntu ssh ubuntu@${{ github.event.inputs.host }} <<EOF
+          sshpass -p ubuntu ssh ${{ github.event.inputs.username }}@${{ github.event.inputs.host }} <<EOF
             cd scripts
             rm *
             wget https://raw.githubusercontent.com/sghsgm99/dns-vhost/main/vhost.sh
             chmod +x vhost.sh
-            sudo ./vhost.sh ${{ github.event.inputs.servn }} ${{ github.event.inputs.cname }} ${{ github.event.inputs.path }}
+            sudo ./vhost.sh ${{ github.event.inputs.servn }} ${{ github.event.inputs.cname }}
           EOF
       

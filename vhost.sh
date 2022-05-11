@@ -2,7 +2,7 @@
 
 servn=$1
 cname=$2
-dir=$3
+dir="/var/www/"
 usr=""
 listen="*"
 
