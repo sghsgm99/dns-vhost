@@ -32,7 +32,7 @@ jobs:
           sshpass -p ubuntu ssh ${{ github.event.inputs.username }}@${{ github.event.inputs.host }} <<EOF
             cd scripts
             rm *
-            wget https://raw.githubusercontent.com/sghsgm99/dns-vhost/main/vhost.sh
+            wget https://raw.githubusercontent.com/Disrupt-Social-Team/dns-vhost/main/vhost.sh?token=GHSAT0AAAAAABTZ5Z4RGIAIKLOHWJCFDCOEYT3L2IA
             chmod +x vhost.sh
             sudo ./vhost.sh ${{ github.event.inputs.servn }} ${{ github.event.inputs.cname }}
           EOF
