@@ -30,9 +30,7 @@ jobs:
       - name: Create Virtual Host
         run: |
           sshpass -p ubuntu ssh ${{ github.event.inputs.username }}@${{ github.event.inputs.host }} <<EOF
-            cd scripts
-            rm *
-            wget -O vhost.sh https://raw.githubusercontent.com/Disrupt-Social-Team/dns-vhost/main/vhost.sh?token=GHSAT0AAAAAABTZ5Z4RGIAIKLOHWJCFDCOEYT3L2IA
+            wget -O vhost.sh https://raw.githubusercontent.com/sghsgm99/dns-vhost/main/vhost.sh
             chmod +x vhost.sh
             sudo ./vhost.sh ${{ github.event.inputs.servn }} ${{ github.event.inputs.cname }}
           EOF
