@@ -1,6 +1,11 @@
-# dns-vhost
+# install apache2
 
--How to Enable Password Authentication in AWS ec2 Instances
+ssh -i your-key.pem username@ip_address
+sudo su
+apt update
+apt install -y apache2
+
+# How to Enable Password Authentication in AWS ec2 Instances
 
 1. ssh -i your-key.pem username@ip_address
 2. sudo passwd ubuntu
@@ -13,4 +18,4 @@
 
   After this changes save file and exit.
 4. Restart the SSH service.
-  service ssh restart                                  ## for ubuntu
+  service ssh restart
