@@ -1,9 +1,11 @@
 # install apache2
 
+```bash
 ssh -i your-key.pem username@ip_address
 sudo su
 apt update
 apt install -y apache2
+```
 
 # How to Enable Password Authentication in AWS ec2 Instances
 
