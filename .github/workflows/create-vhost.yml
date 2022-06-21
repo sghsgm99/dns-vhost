@@ -15,6 +15,9 @@ on:
       username:
         description: 'Username'
         required: true  
+      password:
+        description: 'Password'
+        required: true
 jobs:
   create-vhost-actions:
     runs-on: ubuntu-latest
@@ -29,7 +32,7 @@ jobs:
           ssh-keyscan -H ${{ github.event.inputs.host }} > ~/.ssh/known_hosts
       - name: Create Virtual Host
         run: |
-          sshpass -p ubuntu ssh ${{ github.event.inputs.username }}@${{ github.event.inputs.host }} <<EOF
+          sshpass -p ${{ github.event.inputs.password }} ssh ${{ github.event.inputs.username }}@${{ github.event.inputs.host }} <<EOF
             wget -O vhost.sh https://raw.githubusercontent.com/sghsgm99/dns-vhost/main/vhost.sh
             chmod +x vhost.sh
             sudo ./vhost.sh ${{ github.event.inputs.servn }} ${{ github.event.inputs.cname }}
