@@ -1,0 +1,32 @@
+name: DNS API
+
+on:
+  workflow_dispatch:
+    inputs:
+      host:
+        description: 'Domain Host'
+        required: true
+      password:
+        description: 'Password'
+        required: true
+jobs:
+  dns-api-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install packages
+        run: |
+          sudo apt-get -y install sshpass
+      - name: Add known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ github.event.inputs.host }} > ~/.ssh/known_hosts
+      - name: Create Virtual Host
+        run: |
+          ls
+          sshpass -p ${{ github.event.inputs.password }} scp vhost.sh ubuntu@${{ github.event.inputs.host }}:/home/ubuntu/
+          sshpass -p ${{ github.event.inputs.password }} ssh ubuntu@${{ github.event.inputs.host }} <<EOF
+            ls
+            chmod +x vhost.sh
+            ls
+          EOF
